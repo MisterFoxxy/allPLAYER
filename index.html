@@ -10,7 +10,7 @@
     h2   { text-align: center; margin-bottom: 20px; }
     .btn-container {
       display: flex; flex-wrap: wrap; justify-content: center;
-      gap: 8px; margin-bottom: 20px;
+      gap: 8px; margin-bottom: 10px;
     }
     .btn {
       padding: 8px 16px;
@@ -23,13 +23,44 @@
     }
     .btn.active { box-shadow: 0 0 0 2px #000 inset; }
     .btn:hover { background: #C36019; }
-    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+
+    .filter-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin: 10px 0 20px;
+      align-items: center;
+    }
+    .filter-container label {
+      font-size: 14px;
+    }
+    .filter-container input {
+      padding: 4px 8px;
+      font-size: 14px;
+      width: 90px;
+      box-sizing: border-box;
+      margin-left: 4px;
+    }
+
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
     th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
     th { background: #f4f4f4; cursor: pointer; }
     @media (max-width: 480px) {
       body { font-size: 12px; padding: 10px; }
       th, td { padding: 4px; font-size: 10px; }
       .btn { flex: 1 1 auto; min-width: 90px; }
+      .filter-container {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .filter-container label {
+        display: flex;
+        justify-content: space-between;
+      }
+      .filter-container input {
+        width: 100px;
+      }
     }
   </style>
 </head>
@@ -39,6 +70,23 @@
   <div class="btn-container">
     <button class="btn active" id="btn-fshr" onclick="setMode('FSHR')">Список ФШР</button>
     <button class="btn" id="btn-rsht" onclick="setMode('RSHT')">Список РШТ</button>
+  </div>
+
+  <div class="filter-container">
+    <label>
+      Год рождения:
+      <input type="number" id="filter-year" placeholder="2014">
+    </label>
+    <label>
+      Рейтинг от:
+      <input type="number" id="filter-rt-min" placeholder="0">
+    </label>
+    <label>
+      до:
+      <input type="number" id="filter-rt-max" placeholder="3000">
+    </label>
+    <button class="btn" onclick="applyFilters()">Фильтровать</button>
+    <button class="btn" onclick="resetFilters()">Сбросить</button>
   </div>
 
   <table id="tab">
@@ -57,6 +105,11 @@
     var mode = 'FSHR';
     var col = 'rt';
     var asc = false;
+
+    // Фильтры
+    var filterYear   = '';
+    var filterRtMin  = '';
+    var filterRtMax  = '';
 
     function setMode(m) {
       mode = m;
@@ -77,6 +130,30 @@
       render();
     }
 
+    function applyFilters() {
+      var y  = document.getElementById('filter-year').value.trim();
+      var r1 = document.getElementById('filter-rt-min').value.trim();
+      var r2 = document.getElementById('filter-rt-max').value.trim();
+
+      filterYear  = y;
+      filterRtMin = r1;
+      filterRtMax = r2;
+
+      render();
+    }
+
+    function resetFilters() {
+      filterYear   = '';
+      filterRtMin  = '';
+      filterRtMax  = '';
+
+      document.getElementById('filter-year').value    = '';
+      document.getElementById('filter-rt-min').value  = '';
+      document.getElementById('filter-rt-max').value  = '';
+
+      render();
+    }
+
     function render() {
       var hdr = document.getElementById('hdr');
       hdr.innerHTML = [
@@ -91,6 +168,37 @@
 
       var arr = (data[mode] || []).slice();
 
+      // Применяем фильтры по году и рейтингу
+      arr = arr.filter(function(p) {
+        var ok = true;
+
+        // фильтр по году рождения (точное совпадение)
+        if (filterYear) {
+          ok = ok && ((p.birth || '') === filterYear);
+        }
+
+        var rt = parseFloat(p.rt || '0') || 0;
+
+        // фильтр по минимальному рейтингу
+        if (filterRtMin !== '') {
+          var min = parseFloat(filterRtMin);
+          if (!isNaN(min)) {
+            if (rt < min) ok = false;
+          }
+        }
+
+        // фильтр по максимальному рейтингу
+        if (filterRtMax !== '') {
+          var max = parseFloat(filterRtMax);
+          if (!isNaN(max)) {
+            if (rt > max) ok = false;
+          }
+        }
+
+        return ok;
+      });
+
+      // Сортировка
       arr.sort(function(a, b) {
         var A = a[col] || '';
         var B = b[col] || '';
@@ -106,6 +214,7 @@
         return 0;
       });
 
+      // Рендер строк
       arr.forEach(function(p, i) {
         body.insertAdjacentHTML(
           'beforeend',
