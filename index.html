@@ -91,17 +91,22 @@
       white-space: pre-wrap;
     }
 
-    .tag-box {
+    .tag-box, .url-box {
       margin-top: 10px;
       text-align: center;
       color: #333;
       font-size: 14px;
+      word-break: break-all;
     }
 
-    .tag-box code {
+    .tag-box code, .url-box code {
       background: #f4f4f4;
       padding: 3px 6px;
       border-radius: 4px;
+    }
+
+    .url-box a {
+      color: #1a5fb4;
     }
 
     @media (max-width: 480px) {
@@ -153,12 +158,18 @@
   </div>
 
   <div class="actions">
+    <button class="btn" id="btn-open">Проверить / открыть запрос Bitrix</button>
     <button class="btn" id="btn-send">Отправить этих в Bitrix</button>
     <button class="btn" id="btn-csv">Скачать CSV</button>
   </div>
 
   <div class="tag-box">
     Текущий tag для Bitrix: <code id="currentTag">—</code>
+  </div>
+
+  <div class="url-box">
+    Ссылка запроса: <a id="requestLink" href="#" target="_blank" rel="noopener noreferrer">открыть</a><br>
+    <code id="requestUrl">—</code>
   </div>
 
   <table id="tab">
@@ -196,6 +207,8 @@
         var err = document.getElementById('err');
         var ratingHeader = document.getElementById('ratingHeader');
         var currentTagBox = document.getElementById('currentTag');
+        var requestLink = document.getElementById('requestLink');
+        var requestUrlBox = document.getElementById('requestUrl');
 
         function num(v) {
           var n = parseFloat(String(v || '').replace(',', '.'));
@@ -234,10 +247,6 @@
           }
 
           return parts.join('_');
-        }
-
-        function updateCurrentTag() {
-          currentTagBox.textContent = buildBitrixTag();
         }
 
         function applyFilters(arr) {
@@ -281,6 +290,37 @@
           return arr;
         }
 
+        function buildRequestUrl() {
+          var ids = Array.from(new Set(
+            currentView.map(function (p) { return p.contactId; }).filter(Boolean)
+          ));
+
+          var tag = buildBitrixTag();
+
+          if (!ids.length) return '';
+
+          return (
+            markWebappUrl +
+            '?mode=' + encodeURIComponent(mode) +
+            '&tag=' + encodeURIComponent(tag) +
+            '&contacts=' + encodeURIComponent(ids.join(','))
+          );
+        }
+
+        function updateRequestUi() {
+          var tag = buildBitrixTag();
+          currentTagBox.textContent = tag;
+
+          var url = buildRequestUrl();
+          if (url) {
+            requestLink.href = url;
+            requestUrlBox.textContent = url;
+          } else {
+            requestLink.href = '#';
+            requestUrlBox.textContent = 'Нет CONTACT_ID в текущем отборе';
+          }
+        }
+
         function render() {
           err.textContent = '';
           msg.textContent = '';
@@ -292,9 +332,9 @@
           currentView = arr;
 
           ratingHeader.textContent = mode === 'FSHR' ? 'Рейтинг ФШР' : 'Рейтинг РШТ';
-          updateCurrentTag();
 
           if (!arr.length) {
+            updateRequestUi();
             msg.textContent = 'Нет игроков по текущему фильтру';
             return;
           }
@@ -321,6 +361,8 @@
 
             tbody.appendChild(tr);
           });
+
+          updateRequestUi();
         }
 
         function setMode(newMode) {
@@ -389,32 +431,20 @@
           URL.revokeObjectURL(url);
         }
 
-        function sendSelection() {
+        function openBitrixRequest() {
+          var url = buildRequestUrl();
+
           if (!currentView.length) {
             alert('Нет игроков в текущем отборе');
             return;
           }
 
-          var ids = Array.from(new Set(
-            currentView.map(function (p) { return p.contactId; }).filter(Boolean)
-          ));
-
-          if (!ids.length) {
-            alert('У этих записей нет CONTACT_ID');
+          if (!url) {
+            alert('Нет CONTACT_ID для отправки');
             return;
           }
 
-          var tag = buildBitrixTag();
-
-          var url =
-            markWebappUrl +
-            '?mode=' + encodeURIComponent(mode) +
-            '&tag=' + encodeURIComponent(tag) +
-            '&contacts=' + encodeURIComponent(ids.join(','));
-
-          fetch(url, { method: 'GET', mode: 'no-cors' });
-
-          alert('Отправка списка в Bitrix инициирована (' + ids.length + ' контактов). Tag: ' + tag);
+          window.open(url, '_blank', 'noopener,noreferrer');
         }
 
         document.getElementById('btn-fshr').addEventListener('click', function () {
@@ -441,8 +471,12 @@
           downloadCsv();
         });
 
+        document.getElementById('btn-open').addEventListener('click', function () {
+          openBitrixRequest();
+        });
+
         document.getElementById('btn-send').addEventListener('click', function () {
-          sendSelection();
+          openBitrixRequest();
         });
 
         var headers = document.querySelectorAll('th[data-col]');
