@@ -91,6 +91,19 @@
       white-space: pre-wrap;
     }
 
+    .tag-box {
+      margin-top: 10px;
+      text-align: center;
+      color: #333;
+      font-size: 14px;
+    }
+
+    .tag-box code {
+      background: #f4f4f4;
+      padding: 3px 6px;
+      border-radius: 4px;
+    }
+
     @media (max-width: 480px) {
       body {
         font-size: 12px;
@@ -144,6 +157,10 @@
     <button class="btn" id="btn-csv">Скачать CSV</button>
   </div>
 
+  <div class="tag-box">
+    Текущий tag для Bitrix: <code id="currentTag">—</code>
+  </div>
+
   <table id="tab">
     <thead>
       <tr>
@@ -167,6 +184,8 @@
           RSHT: [{"fullName":"Панкратьев  Серафим  Максимович","birth":"2018","rt":"900","contactId":"2593","dealId":"10267"},{"fullName":"Сапронов Иван Николаевич","birth":"15. ","rt":"899","contactId":"1037","dealId":"3187"},{"fullName":"Горшкова Дарина Викторовна","birth":"2017","rt":"896","contactId":"1635","dealId":"5533"},{"fullName":"Стою Виктория Сергеевна","birth":"2017","rt":"894","contactId":"1655","dealId":"5623"},{"fullName":"Сулейманов Эфе Фаридович","birth":"2019","rt":"894","contactId":"2585","dealId":"10221"},{"fullName":"Баринский  Евгений Михайлович","birth":"2015","rt":"892","contactId":"1811","dealId":"6169"},{"fullName":"Мартынов  Георгий Андреевич","birth":"2016","rt":"890","contactId":"1499","dealId":"4903"},{"fullName":"Белкин  Максим Романович ","birth":"2016","rt":"884","contactId":"1865","dealId":"6593"},{"fullName":"Данелян Давид Ашотович","birth":"2016","rt":"884","contactId":"2081","dealId":"7219"},{"fullName":"Лавров  Артемий  Владимирович ","birth":"2016","rt":"878","contactId":"1761","dealId":"5955"},{"fullName":"Кабанов Степан Игоревич","birth":"2016","rt":"873","contactId":"1191","dealId":"4341"},{"fullName":"Логачев Михаил Алексеевич","birth":"2017","rt":"872","contactId":"1163","dealId":"3699"},{"fullName":"Шипилов  Максим  Алексеевич ","birth":"2016","rt":"870","contactId":"1685","dealId":"5657"},{"fullName":"Коптягин Егор Дмитриевич","birth":"2016","rt":"863","contactId":"707","dealId":"3807"},{"fullName":"Глечян Борис Левонович","birth":"2015","rt":"856","contactId":"1693","dealId":"5671"},{"fullName":"Геворков Марк Станиславович","birth":"2020","rt":"852","contactId":"1591","dealId":"5291"},{"fullName":"Ашрафова Виктория  Васифовна","birth":"2016","rt":"851","contactId":"903","dealId":"2695"},{"fullName":"Лопаткин Даниил Константинович","birth":"2018","rt":"847","contactId":"2025","dealId":"6793"},{"fullName":"Воднев  Максим  Романович","birth":"2015","rt":"841","contactId":"897","dealId":"2461"},{"fullName":"Матвеев Тимур Артемович","birth":"2017","rt":"837","contactId":"1331","dealId":"4141"},{"fullName":"Иванова Алина Витальевна","birth":"2016","rt":"834","contactId":"1733","dealId":"6085"},{"fullName":"Тихоцкий Александр  Сергеевич","birth":"2019","rt":"833","contactId":"2485","dealId":"9721"},{"fullName":"Ярамышев  Михаил  Александрович ","birth":"2016","rt":"832","contactId":"2557","dealId":"9941"},{"fullName":"Тишина Анастасия Евгеньевна ","birth":"2016","rt":"829","contactId":"2069","dealId":"7597"},{"fullName":"Ли Аделина Алексеевна","birth":"2019","rt":"828","contactId":"2553","dealId":"9931"},{"fullName":"Задорожный Роман Русланович","birth":"2016","rt":"827","contactId":"1813","dealId":"6171"},{"fullName":"Кириллов Александр  Алексеевич","birth":"2018","rt":"823","contactId":"1093","dealId":"3559"},{"fullName":"Рогачев Тимофей Алексеевич","birth":"2018","rt":"817","contactId":"1771","dealId":"5843"},{"fullName":"Рекун Захар Кириллович","birth":"2015","rt":"814","contactId":"1159","dealId":"3693"},{"fullName":"Девяткин Семён  Владиславович","birth":"2016","rt":"804","contactId":"2217","dealId":"8487"},{"fullName":"Власова Анна Владимировна","birth":"2015","rt":"802","contactId":"1165","dealId":"3701"},{"fullName":"Говор Марк Антонович","birth":"2016","rt":"800","contactId":"919","dealId":"2743"},{"fullName":"Блинов Борис Александрович","birth":"2017","rt":"799","contactId":"1025","dealId":"3179"},{"fullName":"Васин Радислав Антонович","birth":"2015","rt":"799","contactId":"2275","dealId":"8389"},{"fullName":"Згурская Варвара Николаевна","birth":"2018","rt":"782","contactId":"2551","dealId":"9929"},{"fullName":"Давлетьянов Ренат Анварович","birth":"2015","rt":"780","contactId":"1975","dealId":"7359"},{"fullName":"Марценюк Родион Маркович","birth":"2015","rt":"774","contactId":"1413","dealId":"4633"},{"fullName":"Шкадина Дарья Вадимовна","birth":"2015","rt":"771","contactId":"1941","dealId":"7299"},{"fullName":"Крючков Артем Михайлович","birth":"2015","rt":"760","contactId":"2457","dealId":"9223"},{"fullName":"Юрьева Ульяна Аркадьевна","birth":"2016","rt":"758","contactId":"1779","dealId":"5891"},{"fullName":"Никитин Сергей Дмитриевич","birth":"2016","rt":"755","contactId":"1213","dealId":"3733"},{"fullName":"Мицов Леон Тодорович","birth":"2017","rt":"753","contactId":"1729","dealId":"6077"},{"fullName":"Сорокин Демид Владимирович ","birth":"2017","rt":"748","contactId":"2315","dealId":"8437"},{"fullName":"Чередниченко Ярослав Валерьевич","birth":"2017","rt":"746","contactId":"1177","dealId":"3487"},{"fullName":"Минькин Георгий Витальевич","birth":"2018","rt":"744","contactId":"2019","dealId":"6881"},{"fullName":"Городецкий Марк Михайлович","birth":"2017","rt":"744","contactId":"2381","dealId":"9073"},{"fullName":"аль-Марфади Лев Ильич","birth":"2018","rt":"742","contactId":"1155","dealId":"3687"},{"fullName":"Бирюков Платон Денисович","birth":"2014","rt":"741","contactId":"667","dealId":"3199"},{"fullName":"Щукин Марк Алексеевич","birth":"2018","rt":"738","contactId":"2573","dealId":"9991"},{"fullName":"Васенина Варвара Сергеевна","birth":"2014","rt":"736","contactId":"475","dealId":"2741"},{"fullName":"Бочков Егор Владиславович","birth":"2015","rt":"736","contactId":"1737","dealId":"6087"},{"fullName":"Черный Тимофей Иванович","birth":"2017","rt":"735","contactId":"1445","dealId":"4545"},{"fullName":"Блинков Егор Денисович","birth":"2015","rt":"732","contactId":"1719","dealId":"6071"},{"fullName":"Потапов Степан Владимирович ","birth":"2016","rt":"731","contactId":"1259","dealId":"4055"},{"fullName":"Пичкова  София  Андреевна ","birth":"2017","rt":"731","contactId":"2123","dealId":"7215"},{"fullName":"Ли Сергей Сергеевич","birth":"2016","rt":"731","contactId":"2129","dealId":"7665"},{"fullName":"Кудинов  Константин  Павлович ","birth":"2015","rt":"726","contactId":"2197","dealId":"8827"},{"fullName":"Егорушкина Мария Дмитриевна","birth":"2017","rt":"725","contactId":"1793","dealId":"6147"},{"fullName":"Атаманов Борис Максимович","birth":"2017","rt":"724","contactId":"1107","dealId":"3577"},{"fullName":"Абрамов Сергей Викторович","birth":"2017","rt":"722","contactId":"1103","dealId":"3737"},{"fullName":"Шаповал Даниил Андреевич","birth":"2016","rt":"721","contactId":"653","dealId":"4395"},{"fullName":"Новоженин Игорь Евгеньевич","birth":"2018","rt":"720","contactId":"1723","dealId":"5937"},{"fullName":"Осмонов Имран Равшанбекович","birth":"2017","rt":"717","contactId":"1977","dealId":"7367"},{"fullName":"Житенёв  Борис  Вячеславович ","birth":"2015","rt":"704","contactId":"1127","dealId":"4053"},{"fullName":"Балюн Богдан Юрьевич","birth":"2017","rt":"703","contactId":"1207","dealId":"4103"},{"fullName":"Костюк Александр Андреевич","birth":"2019","rt":"702","contactId":"2045","dealId":"7561"},{"fullName":"Колесникова Алёна Дмитриевна","birth":"2015","rt":"698","contactId":"2133","dealId":"7675"},{"fullName":"Крапивин Александр Никитович","birth":"2016","rt":"693","contactId":"1849","dealId":"6571"},{"fullName":"Крутов Дамир Евгеньевич","birth":"2017","rt":"692","contactId":"955","dealId":"2789"},{"fullName":"Мейтув Марк Сергеевич","birth":"2016","rt":"690","contactId":"1231","dealId":"3759"},{"fullName":"Шурин Лев Алексеевич","birth":"2015","rt":"689","contactId":"1053","dealId":"4383"},{"fullName":"Соколов Фёдор Алексеевич","birth":"2017","rt":"688","contactId":"1251","dealId":"3783"},{"fullName":"Ховин-Пертая Марк Александрович","birth":"2016","rt":"687","contactId":"1983","dealId":"7375"},{"fullName":"Молчанов Кирилл Сергеевич","birth":"2017","rt":"684","contactId":"895","dealId":"3363"},{"fullName":"Кривовоз  Андрей  Алексеевич ","birth":"2017","rt":"684","contactId":"1081","dealId":"3549"},{"fullName":"Зарипов Марат Рустемович","birth":"2016","rt":"680","contactId":"1125","dealId":"3595"},{"fullName":"Давыдов  Дементий  Алексеевич ","birth":"2015","rt":"679","contactId":"1399","dealId":"4379"},{"fullName":"Ганич Евгений Павлович","birth":"2017","rt":"678","contactId":"2185","dealId":"8795"},{"fullName":"Коньков Михаил Александрович","birth":"2016","rt":"677","contactId":"2073","dealId":"7601"},{"fullName":"Шалтыков Александр  Константинович","birth":"2018","rt":"675","contactId":"1725","dealId":"6075"},{"fullName":"Кожакин Андрей Дмитриевич","birth":"2016","rt":"675","contactId":"2021","dealId":"6895"},{"fullName":"Гусева Александра Дмитриевна","birth":"2017","rt":"674","contactId":"2033","dealId":"6921"},{"fullName":"Филимонцева  Валерия Вадимовна","birth":"2015","rt":"674","contactId":"2443","dealId":"9201"},{"fullName":"Чхенкели Лука Теймуразович","birth":"2017","rt":"673","contactId":"2337","dealId":"8481"},{"fullName":"Одинцова Таисия Кирилловна","birth":"2018","rt":"668","contactId":"1785","dealId":"6135"},{"fullName":"Андреев Демьян Иванович","birth":"2015","rt":"666","contactId":"1691","dealId":"5669"},{"fullName":"Ершов Ян  Вячеславович","birth":"2017","rt":"662","contactId":"1879","dealId":"6319"},{"fullName":"Турсунов Самир Хушбахтович","birth":"2015","rt":"662","contactId":"2493","dealId":"9743"},{"fullName":"Симонов Артём Михайлович","birth":"2015","rt":"661","contactId":"1521","dealId":"4939"},{"fullName":"Иванов  Макар  Павлович","birth":"2016","rt":"659","contactId":"2087","dealId":"7615"},{"fullName":"Ким Тимур Кириллович ","birth":"2016","rt":"658","contactId":"1397","dealId":"4377"},{"fullName":"Романчук Илья Андреевич","birth":"2017","rt":"655","contactId":"1101","dealId":"3567"},{"fullName":"Симакин  Никита  Сергеевич ","birth":"2016","rt":"654","contactId":"943","dealId":"2779"},{"fullName":"Ширков Владимир Ильич","birth":"2015","rt":"654","contactId":"1073","dealId":"3767"},{"fullName":"Боченин Макар  Алексеевич","birth":"2015","rt":"652","contactId":"1109","dealId":"3663"},{"fullName":"Сиротин Николай Сергеевич","birth":"2017","rt":"650","contactId":"2289","dealId":"8415"},{"fullName":"Глебов  Вадим  Николаевич ","birth":"2017","rt":"642","contactId":"2155","dealId":"7701"},{"fullName":"Дроздов Степан Викторович","birth":"2015","rt":"639","contactId":"1123","dealId":"3591"},{"fullName":"Асадуллаев Тимур Вагифович","birth":"2015","rt":"637","contactId":"1709","dealId":"5693"},{"fullName":"Кошелев Тимур Александрович","birth":"2017","rt":"633","contactId":"2565","dealId":"9965"},{"fullName":"Волков Александр Андреевич","birth":"2014","rt":"632","contactId":"1066","dealId":"3535"},{"fullName":"Черкасов Захар Александрович","birth":"2017","rt":"631","contactId":"2065","dealId":"7593"},{"fullName":"Фальковский Глеб Дмитриевич","birth":"2017","rt":"627","contactId":"1963","dealId":"7347"},{"fullName":"Гарусев Степан Дмитриевич","birth":"2019","rt":"626","contactId":"2447","dealId":"8963"},{"fullName":"Абдулин Даниил Сергеевич","birth":"2017","rt":"623","contactId":"829","dealId":"3685"},{"fullName":"Карпов Платон Андреевич","birth":"2015","rt":"619","contactId":"1657","dealId":"5625"},{"fullName":"Ларионова Аврора Артемовна","birth":"2016","rt":"608","contactId":"2489","dealId":"9727"},{"fullName":"Чекотило София Вадимовна","birth":"2017","rt":"605","contactId":"1517","dealId":"4927"},{"fullName":"Силаев Арсений Антонович","birth":"2017","rt":"601","contactId":"1045","dealId":"3195"},{"fullName":"Шестак Владимир Александрович","birth":"2015","rt":"601","contactId":"1855","dealId":"6575"},{"fullName":"Кириленко  Вероника  Александровна ","birth":"2016","rt":"600","contactId":"2067","dealId":"7595"},{"fullName":"Смирнов Степан Тимурович","birth":"2016","rt":"595","contactId":"1133","dealId":"3609"},{"fullName":"Барулай  Пойраз Себахаттинович ","birth":"2019","rt":"595","contactId":"1989","dealId":"7383"},{"fullName":"Степанов Александр  Леонидович","birth":"2018","rt":"595","contactId":"2471","dealId":"9699"},{"fullName":"Овчаренко Александр Денисович","birth":"2016","rt":"593","contactId":"929","dealId":"2761"},{"fullName":"Антонова  Мишель Антоновна ","birth":"2018","rt":"587","contactId":"963","dealId":"2523"},{"fullName":"Антонова Мишель Антоновна","birth":"2018","rt":"587","contactId":"1973","dealId":"7355"},{"fullName":"Пилюгин Максим Сергеевич","birth":"2014","rt":"583","contactId":"641","dealId":"3617"},{"fullName":"Тюняев  Тимур  Александрович ","birth":"2016","rt":"578","contactId":"2061","dealId":"7585"},{"fullName":"Безрученко Яромир Всеволодович","birth":"2018","rt":"575","contactId":"1863","dealId":"6589"},{"fullName":"Кавали  Ричард Роландович","birth":"2020","rt":"575","contactId":"1935","dealId":"7291"},{"fullName":"Мирошников  Сергей Евгеньевич","birth":"2018","rt":"574","contactId":"1839","dealId":"6557"},{"fullName":"Копытин Вячеслав Андреевич","birth":"2017","rt":"572","contactId":"1247","dealId":"4109"},{"fullName":"Ким  Павел Игоревич","birth":"2018","rt":"572","contactId":"1969","dealId":"6529"},{"fullName":"Григорян Гарри Артурович","birth":"2018","rt":"571","contactId":"1951","dealId":"7309"},{"fullName":"Ковальчук Арина Дмитриевна","birth":"2017","rt":"566","contactId":"1873","dealId":"6311"},{"fullName":"Грушин  Максим  Олегович","birth":"2015","rt":"561","contactId":"1403","dealId":"4391"},{"fullName":"Объедков  Максим  Станиславович","birth":"2015","rt":"559","contactId":"961","dealId":"2803"},{"fullName":"Кулаковский  Владислав  Дмитриевич","birth":"2018","rt":"559","contactId":"1667","dealId":"5641"},{"fullName":"Алексанян Ариана  Аршаковна","birth":"2015","rt":"556","contactId":"2517","dealId":"9789"},{"fullName":"Калмыков Леонид Максимович","birth":"2017","rt":"554","contactId":"2441","dealId":"9195"},{"fullName":"Ашуров  Владимир Павлович ","birth":"2016","rt":"549","contactId":"1005","dealId":"3167"},{"fullName":"Капанадзе  Никон Леванович","birth":"2016","rt":"549","contactId":"1705","dealId":"5687"},{"fullName":"Торосян Арарат  Ростомович","birth":"2018","rt":"547","contactId":"2505","dealId":"9767"},{"fullName":"Ивицкая Ния Дмитриевна","birth":"2018","rt":"546","contactId":"477","dealId":"4123"},{"fullName":"Соколов Михаил Сергеевич","birth":"2018","rt":"540","contactId":"1323","dealId":"4131"},{"fullName":"Неподкосов Михаил Павлович","birth":"2014","rt":"539","contactId":"1389","dealId":"4363"},{"fullName":"Ильичева София Антоновна","birth":"2017","rt":"539","contactId":"2095","dealId":"7625"},{"fullName":"Тимофеев Добромир Иванович","birth":"2018","rt":"535","contactId":"1925","dealId":"7273"},{"fullName":"Макаев  Данияр Эмилевич","birth":"2017","rt":"530","contactId":"1317","dealId":"4115"},{"fullName":"Макаев Данияр Эмилевич","birth":"2017","rt":"530","contactId":"2125","dealId":"7657"},{"fullName":"Семенихина Есения Олеговна","birth":"2018","rt":"529","contactId":"2453","dealId":"9913"},{"fullName":"Перелыгин Всеволод Сергеевич","birth":"2018","rt":"527","contactId":"2053","dealId":"7573"},{"fullName":"Абрамов Марк Павлович","birth":"2014","rt":"521","contactId":"1001","dealId":"3569"},{"fullName":"Славиогло Руслан Евгеньевич","birth":"2017","rt":"517","contactId":"999","dealId":"3669"},{"fullName":"Айрапетов Владислав Арсенович","birth":"2019","rt":"515","contactId":"2437","dealId":"9171"},{"fullName":"Чарнопис Мирослава  Евгеньевна ","birth":"2015","rt":"513","contactId":"1299","dealId":"4031"},{"fullName":"Марчелов Никита Александрович","birth":"2017","rt":"512","contactId":"1077","dealId":"3545"},{"fullName":"Басевич  София ","birth":"2015","rt":"511","contactId":"471","dealId":"3815"},{"fullName":"Ястрижевский  Ярослав Евгеньевич ","birth":"2018","rt":"510","contactId":"1695","dealId":"5673"},{"fullName":"Абдурахимов  Тимур Хотамджонович","birth":"2019","rt":"509","contactId":"2151","dealId":"7693"},{"fullName":"Григорьева  Арина  Артёмовна ","birth":"017.","rt":"506","contactId":"631","dealId":"2511"},{"fullName":"Михелева Лада Александровна","birth":"2015","rt":"503","contactId":"1245","dealId":"3775"},{"fullName":"Шургин Даниил Алексеевич ","birth":"2017","rt":"489","contactId":"2607","dealId":"10291"},{"fullName":"Гребенкина Александра Сергеевна","birth":"2018","rt":"484","contactId":"2601","dealId":"10179"},{"fullName":"Шумский Стивен","birth":"2018","rt":"480","contactId":"1433","dealId":"4677"},{"fullName":"Щетников Александр Даниилович","birth":"2020","rt":"475","contactId":"2219","dealId":"8859"},{"fullName":"Дука Максим Юрьевич","birth":"2018","rt":"474","contactId":"1967","dealId":"7161"},{"fullName":"Холин  Тихон  Сергеевич ","birth":"2018","rt":"472","contactId":"2241","dealId":"8345"},{"fullName":"Мазанова Полина Александровна","birth":"2016","rt":"466","contactId":"1417","dealId":"4511"},{"fullName":"Ерофеев Роберт Родионович","birth":"2016","rt":"465","contactId":"2541","dealId":"9919"},{"fullName":"Гаврош Михаил Дмитриевич","birth":"2016","rt":"463","contactId":"2581","dealId":"10209"},{"fullName":"Чжан Лэи Лонович ","birth":"2021","rt":"462","contactId":"1503","dealId":"4909"},{"fullName":"Брыжа Артем Вадимович","birth":"2019","rt":"455","contactId":"2347","dealId":"8503"},{"fullName":"Буров  Иван Алексеевич ","birth":"2017","rt":"449","contactId":"1289","dealId":"4091"},{"fullName":"Суданов Назар Николаевич","birth":"2018","rt":"446","contactId":"1883","dealId":"6613"},{"fullName":"Дорошенко Федор Русланович ","birth":"2018","rt":"433","contactId":"981","dealId":"2631"},{"fullName":"Артамонов Сергей Александрович","birth":"2018","rt":"432","contactId":"1067","dealId":"3679"},{"fullName":"Борисов Мирон Сергеевич","birth":"2017","rt":"426","contactId":"2481","dealId":"9351"},{"fullName":"Проничкин Мирон Витальевич","birth":"2017","rt":"422","contactId":"1809","dealId":"6165"},{"fullName":"Шумилов  Алексей  Станиславович ","birth":"2015","rt":"413","contactId":"917","dealId":"2739"},{"fullName":"Гусайханов Расул Рабазанович","birth":"2018","rt":"412","contactId":"1097","dealId":"4407"},{"fullName":"Карпов Александр Дмитриевич","birth":"2018","rt":"412","contactId":"2011","dealId":"6867"},{"fullName":"Беспалова Надежда Михайловна ","birth":"2017","rt":"407","contactId":"1531","dealId":"4961"},{"fullName":"Кучиев Максим Владимирович","birth":"2017","rt":"406","contactId":"1111","dealId":"3581"},{"fullName":"Горбачев Лука Сергеевич","birth":"2018","rt":"394","contactId":"2057","dealId":"7577"},{"fullName":"Валынкин Эмиль  Сергеевич","birth":"2016","rt":"393","contactId":"759","dealId":"3547"},{"fullName":"Поповкин Александр Станиславович","birth":"2018","rt":"380","contactId":"2051","dealId":"7571"},{"fullName":"Терехов Кирилл Дмитриевич","birth":"2016","rt":"373","contactId":"1091","dealId":"3555"},{"fullName":"Скубицкий Никита  Юрьевич","birth":"2016","rt":"373","contactId":"2207","dealId":"8845"},{"fullName":"Валеева Асель Айратовна","birth":"2019","rt":"276","contactId":"2455","dealId":"9211"},{"fullName":"Личагин Михаил Андреевич","birth":"2018","rt":"247","contactId":"1853","dealId":"6309"},{"fullName":"Румянцев Лев Сергеевич","birth":"2019","rt":"","contactId":"949","dealId":"2459"},{"fullName":"Козлов Кирилл Нет отч","birth":"2018","rt":"","contactId":"971","dealId":"2619"},{"fullName":"Кондратов  Михаил  Александрович ","birth":"2015","rt":"","contactId":"883","dealId":"2759"},{"fullName":"Дубиковский Олег Вячеславович","birth":"2016","rt":"","contactId":"951","dealId":"2787"},{"fullName":"Итенберг Марк Игоревич","birth":"2017","rt":"","contactId":"1099","dealId":"3009"},{"fullName":"Абдулова Малика Рахимулловна","birth":"2016","rt":"","contactId":"1079","dealId":"3029"},{"fullName":"Татаринова Мария Сергеевна","birth":"2019","rt":"","contactId":"965","dealId":"3235"},{"fullName":"Катиков Артем Викторович","birth":"2016","rt":"","contactId":"1185","dealId":"3423"},{"fullName":"Кукушкин  Родион  Васильевич ","birth":"2017","rt":"","contactId":"1197","dealId":"3449"},{"fullName":"Морозов Марк Степанович","birth":"2018","rt":"","contactId":"1173","dealId":"3709"},{"fullName":"Марченко  Глеб Станиславович","birth":"2015","rt":"","contactId":"1199","dealId":"3723"},{"fullName":"Желтов Аркадий  Павлович","birth":"2014","rt":"","contactId":"1274","dealId":"4063"},{"fullName":"Губанков Никита Игоревич","birth":"2014","rt":"","contactId":"1301","dealId":"4101"},{"fullName":"Саянов Кирилл Константинович","birth":"2015","rt":"","contactId":"1321","dealId":"4129"},{"fullName":"Чундоков  Дамир Тимурович","birth":"2018","rt":"","contactId":"1371","dealId":"4331"},{"fullName":"Хорбенко Роман Геннадьевич","birth":"2015","rt":"","contactId":"1385","dealId":"4353"},{"fullName":"Гончаренко Иван Павлович","birth":"2016","rt":"","contactId":"1405","dealId":"4399"},{"fullName":"Колесова Вера Павловна","birth":"2016","rt":"","contactId":"1443","dealId":"4549"},{"fullName":"Мищенко Иван Васильевич","birth":"2017","rt":"","contactId":"1453","dealId":"4609"},{"fullName":"Гуляев Давид Михайлович","birth":"2019","rt":"","contactId":"1471","dealId":"4623"},{"fullName":"Боватов Михаэль Евгеньевич","birth":"2016","rt":"","contactId":"1535","dealId":"4969"},{"fullName":"Гусева Алиса Денисовна","birth":"2018","rt":"","contactId":"1581","dealId":"5273"},{"fullName":"Алтухов Тихон Иванович","birth":"2015","rt":"","contactId":"1701","dealId":"5529"},{"fullName":"Трайкович Лев Алексеевич","birth":"2019","rt":"","contactId":"1645","dealId":"5607"},{"fullName":"Чеманков Митя Сергеевич","birth":"2019","rt":"","contactId":"1663","dealId":"5631"},{"fullName":"Замараев Дмитрий Александрович","birth":"2018","rt":"","contactId":"1673","dealId":"5645"},{"fullName":"Перепелица  Александр  Андреевич ","birth":"2018","rt":"","contactId":"1759","dealId":"5949"},{"fullName":"Цымпэу Матвей  Викторович","birth":"2016","rt":"","contactId":"1749","dealId":"6095"},{"fullName":"Телятников Артемий Игоревич","birth":"2018","rt":"","contactId":"1769","dealId":"6113"},{"fullName":"Уманский  Кирилл Романович","birth":"2015","rt":"","contactId":"1791","dealId":"6145"},{"fullName":"Гуня Иван Андреевич","birth":"2018","rt":"","contactId":"1895","dealId":"6287"},{"fullName":"Краснопольский Владимир Андреевич","birth":"2017","rt":"","contactId":"1875","dealId":"6315"},{"fullName":"Бакан Ксения Антоновна","birth":"2018","rt":"","contactId":"1847","dealId":"6321"},{"fullName":"Лулаева Виолетта  Олеговна ","birth":"2019","rt":"","contactId":"1953","dealId":"6425"},{"fullName":"Салтыков  Егор Андреевич","birth":"2016","rt":"","contactId":"1927","dealId":"6533"},{"fullName":"Кургинян Микаэл Айказович","birth":"2018","rt":"","contactId":"1845","dealId":"6569"},{"fullName":"Селезнева Александра Сергеевна","birth":"2018","rt":"","contactId":"1857","dealId":"6583"},{"fullName":"Степахин Владислав Сергеевич","birth":"2015","rt":"","contactId":"1891","dealId":"6621"},{"fullName":"Смирнова Лиза  Александровна ","birth":"2018","rt":"","contactId":"2055","dealId":"7203"},{"fullName":"Ковалевский  Денис Павлович","birth":"2017","rt":"","contactId":"2093","dealId":"7211"},{"fullName":"Максимилиан Кадушин Евгеньевич","birth":"2016","rt":"","contactId":"1991","dealId":"7391"},{"fullName":"Бороденко Герман Витальевич","birth":"2018","rt":"","contactId":"2063","dealId":"7591"},{"fullName":"Водопьянова Мия Денисовна","birth":"2016","rt":"","contactId":"2071","dealId":"7599"},{"fullName":"Литвин Ян Сергеевич","birth":"2015","rt":"","contactId":"2193","dealId":"7747"},{"fullName":"Макаров МакаровРоман Константинович","birth":"2013","rt":"","contactId":"2235","dealId":"7991"},{"fullName":"Ряхимов Александр Дмитриевич","birth":"2019","rt":"","contactId":"2249","dealId":"8233"},{"fullName":"Манукян Давид Гарегинович ","birth":"2016","rt":"","contactId":"2279","dealId":"8235"},{"fullName":"Железнов Георгий Сергеевич","birth":"2015","rt":"","contactId":"2291","dealId":"8285"},{"fullName":"Бурносов Олег Сергеевич","birth":"2017","rt":"","contactId":"2305","dealId":"8301"},{"fullName":"Морозов Матвей Игоревич","birth":"2019","rt":"","contactId":"2247","dealId":"8349"},{"fullName":"Бородулин Андрей  Анатольевич","birth":"2018","rt":"","contactId":"2257","dealId":"8363"},{"fullName":"Аминулла Михаил Алиевич","birth":"2018","rt":"","contactId":"2277","dealId":"8393"},{"fullName":"Ахметшина Ясмина Юнировна","birth":"2017","rt":"","contactId":"2319","dealId":"8443"},{"fullName":"Гендлин Матвей Дмитриевич","birth":"2016","rt":"","contactId":"2325","dealId":"8451"},{"fullName":"Костин Петр Георгиевич","birth":"2016","rt":"","contactId":"2327","dealId":"8455"},{"fullName":"Ерофеев Климент Алексеевич","birth":"2017","rt":"","contactId":"2349","dealId":"8505"},{"fullName":"Чебесков Марк Иванович","birth":"2020","rt":"","contactId":"2205","dealId":"8837"},{"fullName":"Гилмуллин  Захид  Рафаэльевна ","birth":"2017","rt":"","contactId":"2213","dealId":"8847"},{"fullName":"Соснина  Олеся  Александровна ","birth":"2015","rt":"","contactId":"2403","dealId":"8959"},{"fullName":"Герасимова Дарья Алексеевна","birth":"2017","rt":"","contactId":"2445","dealId":"8967"},{"fullName":"Платонов Андрей Александрович","birth":"2016","rt":"","contactId":"2429","dealId":"8969"},{"fullName":"Арутюнян  Роберт  Тигранович","birth":"2018","rt":"","contactId":"2407","dealId":"8971"},{"fullName":"Ашенбреннер Александр Станиславович","birth":"2017","rt":"","contactId":"2451","dealId":"8975"},{"fullName":"Ибрагимова  Диана Ибрагимовна","birth":"2018","rt":"","contactId":"2419","dealId":"9149"},{"fullName":"Шкункова Алена Ивановна","birth":"2018","rt":"","contactId":"2449","dealId":"9209"},{"fullName":"Звездин Антон Васильевич ","birth":"2015","rt":"","contactId":"2473","dealId":"9701"},{"fullName":"Иванов  Иванов Ивановым ","birth":"2020","rt":"","contactId":"2483","dealId":"9717"},{"fullName":"Маругов  Петр  Владимирович ","birth":"2015","rt":"","contactId":"2525","dealId":"9795"},{"fullName":"Самойлов Артемий Александрович","birth":"2017","rt":"","contactId":"2543","dealId":"9839"},{"fullName":"Сурганова Агния Викторовна","birth":"2018","rt":"","contactId":"2589","dealId":"10137"},{"fullName":"Фролов Макар Олегович","birth":"2019","rt":"","contactId":"2605","dealId":"10151"},{"fullName":"Арутюнова Софья Артемовна","birth":"2016","rt":"","contactId":"2587","dealId":"10169"},{"fullName":"Екатерина Куликова Денисовна","birth":"2017","rt":"","contactId":"2609","dealId":"10301"}]
         };
 
+        var markWebappUrl = "https://script.google.com/macros/u/1/s/AKfycbxov6qzVPxq66xUwPz3HhmdZoOxPI0wG9DlFnK1zBvri7G1vt-YKkBXvShrBl2yw_jjQg/exec";
+
         var mode = 'FSHR';
         var sortCol = 'rt';
         var sortAsc = false;
@@ -176,6 +195,7 @@
         var msg = document.getElementById('msg');
         var err = document.getElementById('err');
         var ratingHeader = document.getElementById('ratingHeader');
+        var currentTagBox = document.getElementById('currentTag');
 
         function num(v) {
           var n = parseFloat(String(v || '').replace(',', '.'));
@@ -184,6 +204,40 @@
 
         function clearNode(node) {
           while (node.firstChild) node.removeChild(node.firstChild);
+        }
+
+        function cleanPart(v) {
+          return String(v || '')
+            .trim()
+            .replace(/\s+/g, '')
+            .replace(/[^0-9A-Za-z_-]/g, '');
+        }
+
+        function getTodayStr() {
+          return new Date().toISOString().slice(0, 10);
+        }
+
+        function buildBitrixTag() {
+          var yMin = document.getElementById('filter-year-min').value.trim();
+          var yMax = document.getElementById('filter-year-max').value.trim();
+          var rMin = document.getElementById('filter-rt-min').value.trim();
+          var rMax = document.getElementById('filter-rt-max').value.trim();
+
+          var parts = ['MAIL', mode, getTodayStr()];
+
+          if (yMin || yMax) {
+            parts.push('Y' + cleanPart(yMin || '0') + '-' + cleanPart(yMax || '9999'));
+          }
+
+          if (rMin || rMax) {
+            parts.push('R' + cleanPart(rMin || '0') + '-' + cleanPart(rMax || '9999'));
+          }
+
+          return parts.join('_');
+        }
+
+        function updateCurrentTag() {
+          currentTagBox.textContent = buildBitrixTag();
         }
 
         function applyFilters(arr) {
@@ -238,6 +292,7 @@
           currentView = arr;
 
           ratingHeader.textContent = mode === 'FSHR' ? 'Рейтинг ФШР' : 'Рейтинг РШТ';
+          updateCurrentTag();
 
           if (!arr.length) {
             msg.textContent = 'Нет игроков по текущему фильтру';
@@ -289,8 +344,17 @@
             return;
           }
 
+          var tag = buildBitrixTag();
           var rows = [];
-          rows.push(['#', 'ФИО', 'Год рождения', 'Рейтинг', 'CONTACT_ID', 'DEAL_ID']);
+          rows.push([
+            '#',
+            'ФИО',
+            'Год рождения',
+            'Рейтинг',
+            'CONTACT_ID',
+            'DEAL_ID',
+            'BITRIX_TAG'
+          ]);
 
           currentView.forEach(function (p, i) {
             rows.push([
@@ -299,7 +363,8 @@
               p.birth || '',
               p.rt || '',
               p.contactId || '',
-              p.dealId || ''
+              p.dealId || '',
+              tag
             ]);
           });
 
@@ -315,7 +380,7 @@
           var a = document.createElement('a');
 
           a.href = url;
-          a.download = 'players_' + mode + '_' + new Date().toISOString().slice(0, 10) + '.csv';
+          a.download = tag + '.csv';
 
           document.body.appendChild(a);
           a.click();
@@ -339,14 +404,17 @@
             return;
           }
 
+          var tag = buildBitrixTag();
+
           var url =
-            'https://script.google.com/macros/u/1/s/AKfycbxov6qzVPxq66xUwPz3HhmdZoOxPI0wG9DlFnK1zBvri7G1vt-YKkBXvShrBl2yw_jjQg/exec' +
+            markWebappUrl +
             '?mode=' + encodeURIComponent(mode) +
+            '&tag=' + encodeURIComponent(tag) +
             '&contacts=' + encodeURIComponent(ids.join(','));
 
           fetch(url, { method: 'GET', mode: 'no-cors' });
 
-          alert('Отправка списка в Bitrix инициирована (' + ids.length + ' контактов).');
+          alert('Отправка списка в Bitrix инициирована (' + ids.length + ' контактов). Tag: ' + tag);
         }
 
         document.getElementById('btn-fshr').addEventListener('click', function () {
